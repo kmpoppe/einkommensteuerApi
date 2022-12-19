@@ -16,6 +16,8 @@ if (!array_key_exists("REQUEST_METHOD", $_SERVER)) {
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$calledMethod = $_GET["method"];
 		$postData     = file_get_contents("php://input");
+	} else {
+		$calledMethod = $_GET["method"];
 	}
 }
 
@@ -71,6 +73,18 @@ if (sizeof($errorStack) == 0) {
 			if (sizeof($errorStack) == 0) {
 				$returnData = $calcObj->calc(intval($data->year), $splitting, intval($data->ESt));
 			}
+			break;
+		}
+		case "validYearsESt": {
+			$calcObj = new calcESt();
+			$validYears = $calcObj->validYears();
+			$returnData = Array("minimum" => $validYears[0], "maximum" => $validYears[1]);
+			break;
+		}
+		case "validYearsSoli": {
+			$calcObj = new calcESt();
+			$validYears = $calcObj->validYears();
+			$returnData = Array("minimum" => $validYears[0], "maximum" => $validYears[1]);
 			break;
 		}
 		default: {
