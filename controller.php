@@ -28,10 +28,12 @@ if (!array_key_exists("REQUEST_METHOD", $_SERVER)) {
 
 if (sizeof($errorStack) == 0) {
 	// Wenn splitting nicht im Eingangs-Datenfeld ist, nehmen wir false an. TRUE, 1 oder "true" setzen true.
-	if (property_exists($data, "splitting")) {
-		$splitting = ($data->splitting === true || $data->splitting == "1" || strtolower($data->splitting) == "true" ? true : false);
-	} else {
-		$splitting = false;
+	if ($calledMethod == "calcESt" || $calledMethod == "calcSoli") {
+		if (property_exists($data, "splitting")) {
+			$splitting = ($data->splitting === true || $data->splitting == "1" || strtolower($data->splitting) == "true" ? true : false);
+		} else {
+			$splitting = false;
+		}
 	}
 	switch ($calledMethod) {
 		case "calcESt": {
