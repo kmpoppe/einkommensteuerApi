@@ -100,8 +100,9 @@ echo str_repeat("\t", 9) . "\"maximum\":" . $validYearsESt->maximum . ",\n";
 						}
 					}
 				}
-			},
-			"/methods/calcSoli":{
+			}
+		},
+		"/methods/calcSoli":{
 			"post":{
 				"summary":"Berechnung des Solidaritätszuschlags",
 				"parameters":[
@@ -177,8 +178,9 @@ echo str_repeat("\t", 9) . "\"maximum\":" . $validYearsSoli->maximum . ",\n";
 						}
 					}
 				}
-			},
-			"/methods/validYearsEst":{
+			}
+		},
+		"/methods/validYearsEst":{
 			"get":{
 				"summary":"Verfügbare Jahre für Berechnung der Einkommensteuer",
 				"responses":{
@@ -211,8 +213,9 @@ echo str_repeat("\t", 9) . "\"example\":" . $validYearsESt->maximum . "\n";
 						}
 					}
 				}
-			},
-			"/methods/validYearsSoli":{
+			}
+		},
+		"/methods/validYearsSoli":{
 			"get":{
 				"summary":"Verfügbare Jahre für Berechnung des Solidaritätszuschlags",
 				"responses":{
