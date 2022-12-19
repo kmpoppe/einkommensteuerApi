@@ -61,7 +61,7 @@ echo str_repeat("\t", 9) . "\"maximum\":" . $validYearsESt->maximum . ",\n";
 									"type":"integer",
 									"description":"Zu versteuerndes Einkommen",
 									"minimum":0,
-									"example":"35678"
+									"example":35678
 								}
 							}
 						}
@@ -139,7 +139,7 @@ echo str_repeat("\t", 9) . "\"maximum\":" . $validYearsSoli->maximum . ",\n";
 									"type":"integer",
 									"description":"Tarifliche Einkommensteuer, auf die der Solidaritätszuschlag berechent werden soll",
 									"minimum":0,
-									"example":"3804"
+									"example":3804
 								}
 							}
 						}
