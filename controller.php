@@ -16,15 +16,14 @@ if (!array_key_exists("REQUEST_METHOD", $_SERVER)) {
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$calledMethod = $_GET["method"];
 		$postData     = file_get_contents("php://input");
+		try {
+			$data = json_decode($postData, false, 512, JSON_THROW_ON_ERROR);
+		} catch (JsonException $e) {
+			$errorStack[] = "JSON decode error";
+		}
 	} else {
 		$calledMethod = $_GET["method"];
 	}
-}
-
-try {
-	$data = json_decode($postData, false, 512, JSON_THROW_ON_ERROR);
-} catch (JsonException $e) {
-	$errorStack[] = "JSON decode error";
 }
 
 if (sizeof($errorStack) == 0) {
