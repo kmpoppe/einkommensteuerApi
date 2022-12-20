@@ -12,6 +12,7 @@ if (!array_key_exists("REQUEST_METHOD", $_SERVER)) {
 	// console execution
 	$calledMethod = $_SERVER["argv"][1];
 	$postData     = $_SERVER["argv"][2];
+	$data = json_decode($postData, false, 512, JSON_THROW_ON_ERROR);
 } else {
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$calledMethod = $_GET["method"];
