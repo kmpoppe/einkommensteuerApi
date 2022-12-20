@@ -1,3 +1,5 @@
 Options +FollowSymlinks
 RewriteEngine on
-RewriteRule ^methods/([^\/]*)$ /controller.php?method=$1 [NC,L]
+RewriteRule ^methods\/([^\/]*)$ /controller.php?method=$1 [NC]
+RewriteRule ^swagger.json$ /swagger-json.php [NC]
+RewriteRule ^doc\/(.*)$ /node_modules/swagger-ui-dist/$1 [NC]
