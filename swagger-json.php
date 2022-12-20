@@ -180,7 +180,7 @@ echo str_repeat("\t", 9) . "\"maximum\":" . $validYearsSoli->maximum . ",\n";
 				}
 			}
 		},
-		"/methods/validYearsEst":{
+		"/methods/validYearsESt":{
 			"get":{
 				"summary":"Verfügbare Jahre für Berechnung der Einkommensteuer",
 				"responses":{
