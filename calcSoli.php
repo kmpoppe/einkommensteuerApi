@@ -9,22 +9,29 @@ class calcSoli {
 
 	function __construct()
 	{
-		$this->_getSoliValues(-1);
+		$this->_getSoliValues(null);
 	}
 
 	function _getSoliValues($year) {
-		$this->soliValues = Array(
-			2010 => new soliValues(  972, 0.200),
-			2021 => new soliValues(16956, 0.119),
-			2022 => new soliValues(16956, 0.119),
-			2023 => new soliValues(17543, 0.119),
-			2024 => new soliValues(18130, 0.119)
-		);
-		// Programmablaufpläne 2010 - 2020 identische Werte
-		for ($duplicateY = 2011; $duplicateY <= 2020; $duplicateY++)
-			$this->soliValues[$duplicateY] = $this->soliValues[2010];
+		if (sizeof($this->soliValues) == 0) {
+			$this->soliValues = Array(
+				2010 => new soliValues(  972, 0.200),
+				2021 => new soliValues(16956, 0.119),
+				2022 => new soliValues(16956, 0.119),
+				2023 => new soliValues(17543, 0.119),
+				2024 => new soliValues(18130, 0.119)
+			);
+			// Programmablaufpläne 2010 - 2020 identische Werte
+			for ($duplicateY = 2011; $duplicateY <= 2020; $duplicateY++)
+				$this->soliValues[$duplicateY] = $this->soliValues[2010];
+		}
 
-		if ($year < min(array_keys($this->soliValues)))
+		// initialization of Array was called
+		if (is_null($year))
+			return null;
+
+		$k = array_keys($this->soliValues);
+		if (!in_array($year, range(min($k), max($k))))
 			return null;
 		else
 			return $this->soliValues[$year];
