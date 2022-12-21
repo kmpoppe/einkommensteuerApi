@@ -20,7 +20,12 @@ class calcESt {
 	{
 		if (sizeof($this->zoneLimits) == 0) {
 			$this->zoneLimits = Array(
+				2007 => new estZoneLimits( 7664, 12739, 52151, 250000),
+				2008 => new estZoneLimits( 7664, 12739, 52151, 250000),
+				2009 => new estZoneLimits( 7834, 13139, 52551, 250400),
 				2010 => new estZoneLimits( 8004, 13469, 52881, 250730),
+				2011 => new estZoneLimits( 8004, 13469, 52881, 250730),
+				2012 => new estZoneLimits( 8004, 13469, 52881, 250730),
 				2013 => new estZoneLimits( 8130, 13469, 52881, 250730),
 				2014 => new estZoneLimits( 8354, 13469, 52881, 250730),
 				2015 => new estZoneLimits( 8472, 13469, 52881, 250730),
@@ -34,9 +39,6 @@ class calcESt {
 				2023 => new estZoneLimits(10908, 15999, 62809, 277825),
 				2024 => new estZoneLimits(11604, 17005, 66760, 277825)
 			);
-			// Programmablaufpläne 2010 - 2012 identische Werte
-			for ($duplicateY = 2011; $duplicateY <= 2012; $duplicateY++)
-				$this->zoneLimits[$duplicateY] = $this->zoneLimits[2010];
 		}
 
 		// initialization of Array was called
@@ -53,7 +55,12 @@ class calcESt {
 	function _getFormulaValues($year) {
 		if (sizeof($this->formulaValues) == 0) {
 			$this->formulaValues = Array(
+				2007 => new estFormulaValues( 883.74, 228.74,  989.00,  7914.00, 15414.00),
+				2008 => new estFormulaValues( 883.74, 228.74,  989.00,  7914.00, 15414.00),
+				2009 => new estFormulaValues( 939.68, 228.74, 1007.00,  8064.00, 15576.00),
 				2010 => new estFormulaValues( 912.17, 228.74, 1038.00,  8172.00, 15694.00),
+				2011 => new estFormulaValues( 912.17, 228.74, 1038.00,  8172.00, 15694.00),
+				2012 => new estFormulaValues( 912.17, 228.74, 1038.00,  8172.00, 15694.00),
 				2013 => new estFormulaValues( 933.70, 228.74, 1014.00,  8196.00, 15718.00),
 				2014 => new estFormulaValues( 974.58, 228.74,  971.00,  8239.00, 15761.00),
 				2015 => new estFormulaValues( 997.60, 228.74,  948.68,  8261.29, 15783.19),
@@ -67,9 +74,6 @@ class calcESt {
 				2023 => new estFormulaValues( 979.18, 192.59,  966.53,  9972.28, 18307.73),
 				2024 => new estFormulaValues( 922.98, 181.19, 1025.38, 10602.13, 18936.88)
 			);
-			// Programmablaufpläne 2010 - 2012 identische Werte
-			for ($duplicateY = 2011; $duplicateY <= 2012; $duplicateY++)
-				$this->formulaValues[$duplicateY] = $this->formulaValues[2010]; 
 		}
 
 		// initialization of Array was called
@@ -107,7 +111,9 @@ class calcESt {
 		{
 			// Untere Progressionszone
 			$y = ($zvE - $zoneLimits->zone0) / 10000.0;
-			$ESt = ($formulaValues->zone1factor * $y + 1400.0) * $y;
+			// Eingangssteuersatz 15.0% für 2007 und 2008, danach 14.0%
+			$startEStPerc = (in_array($year, range(2007, 2008)) ? 15 : 14);
+			$ESt = ($formulaValues->zone1factor * $y + $startEStPerc) * $y;
 		}
 		elseif ($zvE < $zoneLimits->zone2 + 1)
 		{
