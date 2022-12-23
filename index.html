@@ -30,7 +30,7 @@
 						}
 					}
 				};
-				xmlhttp.open("GET", apiBase + "validYearsESt", true);
+				xmlhttp.open("GET", apiBase + "methods/validYearsESt", true);
 				xmlhttp.send();
 			}
 			function getESt() {
@@ -50,7 +50,7 @@
 						}
 					}
 				};
-				xmlhttp.open("POST", apiBase + "calcESt", true);
+				xmlhttp.open("POST", apiBase + "methods/calcESt", true);
 				xmlhttp.setRequestHeader("Content-Type", "application/json");
 				var splittingValue = document.querySelector('input[name="splitting"]:checked')?.value;
 				var yearValue      = document.querySelector('select[name="year"]').value;
