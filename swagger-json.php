@@ -12,7 +12,7 @@ $validYearsSoli = json_decode(file_get_contents("https://" . $_SERVER["HTTP_HOST
 			"name": "MIT"
 		}
 	},
-	"host": "estapi.poppe.work",
+	"host": "einkommensteuerapi.de",
 	"basePath": "/",
 	"schemes": [
 		"https"
