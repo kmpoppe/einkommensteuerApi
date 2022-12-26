@@ -95,6 +95,7 @@ if (sizeof($errorStack) == 0) {
 			$validYears = $calcObj->validYears();
 			$returnData["year"] = mt_rand($validYears[0], $validYears[1]);
 			$gfb = $calcObj->getGrundfreibetrag($returnData["year"])["value"];
+			$returnData["Gfb"] = $gfb;
 			$returnData["zvE"] = round($gfb * mt_rand(5000, 10000) / 1000);
 			$returnData["splitting"] = (mt_rand(0, 100) > 50);
 			$returnData["ESt"] = $calcObj->calc($returnData["year"], $returnData["splitting"], $returnData["zvE"])["value"];

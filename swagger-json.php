@@ -299,7 +299,9 @@ echo str_repeat("\t", 9) . "\"example\":" . $demoValues->year . "\n";
 									"type": "number",
 									"description": "Grundfreibetrag",
 									"minimum": 0,
-									"example": 9000
+<?php
+echo str_repeat("\t", 9) . "\"example\":" . $demoValues->Gfb . "\n";
+?>
 								}
 							}
 						}
