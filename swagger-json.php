@@ -293,6 +293,7 @@ echo str_repeat("\t", 9) . "\"example\":" . $validYearsESt->minimum . "\n";
 <?php
 //echo str_repeat("\t", 9) . "\"example\":" . $validYearsESt->maximum . "\n";
 ?>
+								},
 								"ESt":{
 									"type":"integer",
 									"description":"Im Steuerjahr zu zahlende Einkommensteuer",
