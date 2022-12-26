@@ -9,6 +9,10 @@ API für Berechnung der Jahreseinkommensteuer und des Solidaritätszuschlags
 
 **Diese Software ist ein rein privates Projekt von Kai Michael Poppe auf Basis der Vorarbeit von Michael Keutel und soll für andere interessiere Zahlennerds die Möglichkeit bieten, eigene Berechnungen anzustellen.**
 
+## API-Dokumentation
+
+Die hier als Source Code zur Verfügung gestellten Funktionen sind über https://einkommensteuerapi.de zugreifbar, die Swagger-Dokumentation findet sich unter https://einkommensteuerapi.de/doc/
+
 ## Warum das Alles?
 
 Als Entwickler möchte man möglichst viel programmgestützt tun. Dazu gehört wohl auch, für das Ende des Steuerjahres eine Schätzung zu haben, wie hoch denn die Steuerlast ist, so lange das Finanzamt diese Information noch nicht offiziell verkündet hat.
