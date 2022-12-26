@@ -150,5 +150,11 @@ class calcESt {
 		return Array($lowYear, $highYear);
 	}
 
+	// external: getGrundfreibetrag
+	function getGrundfreibetrag($year) {
+		$tzl = $this->_getZoneLimits($year);
+		return Array("result" => "OK", "value" => $tzl->zone0);
+	}
+
 }
 ?>

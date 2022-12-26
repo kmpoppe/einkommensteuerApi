@@ -77,6 +77,11 @@ if (sizeof($errorStack) == 0) {
 			}
 			break;
 		}
+		case "getGrundfreibetrag": {
+			$calcObj = new calcESt();
+			$returnData = $calcObj->getGrundfreibetrag(intval($data->year));
+			break;
+		}
 		case "validYearsESt": {
 			$calcObj = new calcESt();
 			$validYears = $calcObj->validYears();

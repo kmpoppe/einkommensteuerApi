@@ -184,6 +184,73 @@ echo str_repeat("\t", 9) . "\"maximum\":" . $validYearsSoli->maximum . ",\n";
 				}
 			}
 		},
+		"/methods/getGrundfreibetrag": {
+			"post": {
+				"summary": "Grundfreibetrag für Steuerjahr",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "body",
+						"description": "Steuerjahr",
+						"schema": {
+							"type": "object",
+							"required": [
+								"year"
+							],
+							"properties": {
+								"year": {
+									"type": "integer",
+									"description": "Jahr, für das die Antwort erfolgen soll",
+<?php
+echo str_repeat("\t", 9) . "\"minimum\":" . $validYearsSoli->minimum . ",\n";
+echo str_repeat("\t", 9) . "\"maximum\":" . $validYearsSoli->maximum . ",\n";
+?>
+									"example": 2018
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Grundfreibetrag im angegebenen Steuerjahr",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"calledMethod": {
+									"type": "string",
+									"description": "Rückgabe des Namens der aufgerufenen Methode zur Kontrolle",
+									"enum": [
+										"getGrundfreibetrag"
+									],
+									"example": "getGrundfreibetrag"
+								},
+								"result": {
+									"type": "string",
+									"description": "OK wenn die Berechnung erfolgreich war, Error wenn ein Fehler aufgetreten ist",
+									"enum": [
+										"OK",
+										"Error"
+									],
+									"example": "OK"
+								},
+								"errors": {
+									"type": "string",
+									"description": "Liste der aufgetretenen Fehler",
+									"example": ""
+								},
+								"value": {
+									"type": "number",
+									"description": "Grundfreibetrag",
+									"minimum": 0,
+									"example": 9000
+								}
+							}
+						}
+					}
+				}
+			}
+		},
 		"/methods/validYearsESt": {
 			"get": {
 				"summary": "Verfügbare Jahre für Berechnung der Einkommensteuer",
