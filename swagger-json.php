@@ -2,6 +2,7 @@
 $fgcOptions = Array("ssl" => Array("verify_peer" => false, "verify_peer_name" => false));  
 $validYearsESt = json_decode(file_get_contents("https://" . $_SERVER["HTTP_HOST"]. "/methods/validYearsESt", false, stream_context_create($fgcOptions)));
 $validYearsSoli = json_decode(file_get_contents("https://" . $_SERVER["HTTP_HOST"]. "/methods/validYearsSoli", false, stream_context_create($fgcOptions)));
+$demoValues = json_decode(file_get_contents("https://" . $_SERVER["HTTP_HOST"]. "/methods/getDemoValues", false, stream_context_create($fgcOptions)));
 ?>
 {
 	"swagger": "2.0",
@@ -46,8 +47,8 @@ $validYearsSoli = json_decode(file_get_contents("https://" . $_SERVER["HTTP_HOST
 <?php
 echo str_repeat("\t", 9) . "\"minimum\":" . $validYearsESt->minimum . ",\n";
 echo str_repeat("\t", 9) . "\"maximum\":" . $validYearsESt->maximum . ",\n";
+echo str_repeat("\t", 9) . "\"example\":" . $demoValues->year . "\n";
 ?>
-									"example": 2018
 								},
 								"splitting": {
 									"type": "boolean",
@@ -58,7 +59,9 @@ echo str_repeat("\t", 9) . "\"maximum\":" . $validYearsESt->maximum . ",\n";
 									"type": "integer",
 									"description": "Zu versteuerndes Einkommen",
 									"minimum": 0,
-									"example": 35678
+<?php
+echo str_repeat("\t", 9) . "\"example\":" . $demoValues->zvE . "\n";
+?>
 								}
 							}
 						}
@@ -96,7 +99,9 @@ echo str_repeat("\t", 9) . "\"maximum\":" . $validYearsESt->maximum . ",\n";
 									"type": "integer",
 									"description": "Tarifliche Einkommensteuer, abgerundet auf den nächsten vollen Euro",
 									"minimum": 0,
-									"example": 3804
+<?php
+echo str_repeat("\t", 9) . "\"example\":" . $demoValues->ESt . "\n";
+?>
 								}
 							}
 						}
@@ -244,6 +249,50 @@ echo str_repeat("\t", 9) . "\"maximum\":" . $validYearsSoli->maximum . ",\n";
 									"description": "Grundfreibetrag",
 									"minimum": 0,
 									"example": 9000
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/methods/getDemoValues": {
+			"get": {
+				"summary": "Beispielwerte für Einkommensteuer",
+				"responses": {
+					"200": {
+						"description": "Beispielwerte",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"calledMethod": {
+									"type": "string",
+									"description": "Rückgabe des Namens der aufgerufenen Methode zur Kontrolle",
+									"enum": [
+										"getDemoValues"
+									],
+									"example": "getDemoValues"
+								},
+								"year": {
+									"type": "integer",
+									"description": "Steuerjahr",
+<?php
+echo str_repeat("\t", 9) . "\"example\":" . $validYearsESt->minimum . "\n";
+?>
+								},
+								"zvE":{
+									"type":"integer",
+									"description":"Zu versteuerndes Einkommen",
+<?php
+//echo str_repeat("\t", 9) . "\"example\":" . $validYearsESt->maximum . "\n";
+?>
+								},
+								"ESt":{
+									"type":"integer",
+									"description":"Im Steuerjahr zu zahlende Einkommensteuer",
+<?php
+//echo str_repeat("\t", 9) . "\"example\":" . $validYearsESt->maximum . "\n";
+?>
 								}
 							}
 						}

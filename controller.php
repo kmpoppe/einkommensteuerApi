@@ -79,7 +79,25 @@ if (sizeof($errorStack) == 0) {
 		}
 		case "getGrundfreibetrag": {
 			$calcObj = new calcESt();
+			// Fehlerbehandlung
+			if (!property_exists($data, "year")) {
+				$errorStack[] = "No 'year' in input data";
+			} else {
+				$validYears = $calcObj->validYears();
+				if ($data->year < $validYears[0] || $data->year > $validYears[1]) {
+					$errorStack[] = "'year' outside supported range";
+				}
+			}
 			$returnData = $calcObj->getGrundfreibetrag(intval($data->year));
+			break;
+		}
+		case "getDemoValues" : {
+			$calcObj = new calcESt();
+			$validYears = $calcObj->validYears();
+			$returnData["year"] = mt_rand($validYears[0], $validYears[1]);
+			$gfb = $calcObj->getGrundfreibetrag($returnData["year"])["value"];
+			$returnData["zvE"] = round($gfb * mt_rand(5000, 24000) / 1000);
+			$returnData["ESt"] = $calcObj->calc($demoYear, false, $demozvE)["value"];
 			break;
 		}
 		case "validYearsESt": {
