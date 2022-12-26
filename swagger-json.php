@@ -54,7 +54,7 @@ echo str_repeat("\t", 9) . "\"example\":" . $demoValues->year . "\n";
 									"type": "boolean",
 									"description": "Angabe, ob das Splittingverfahren für zusammenveranlagte steuerpflichtige Personen verwendet werden soll",
 <?php
-echo str_repeat("\t", 9) . "\"example\":" . ($demoValues->splitting ? true : false) . "\n";
+echo str_repeat("\t", 9) . "\"example\":" . ($demoValues->splitting == 1 ? true : false) . "\n";
 ?>
 								},
 								"zvE": {
@@ -140,7 +140,7 @@ echo str_repeat("\t", 9) . "\"example\":" . $demoValues->year . "\n";
 									"type": "boolean",
 									"description": "Angabe, ob das Splittingverfahren für zusammenveranlagte steuerpflichtige Personen verwendet werden soll",
 <?php
-echo str_repeat("\t", 9) . "\"example\":" . ($demoValues->splitting ? true : false) . "\n";
+echo str_repeat("\t", 9) . "\"example\":" . ($demoValues->splitting == 1 ? true : false) . "\n";
 ?>
 								},
 								"ESt": {
@@ -299,7 +299,7 @@ echo str_repeat("\t", 9) . "\"example\":" . $demoValues->zvE . "\n";
 									"type":"boolean",
 									"description":"Splittingverfahren verwendet",
 <?php
-echo str_repeat("\t", 9) . "\"example\":" . ($demoValues->splitting ? true : false) . "\n";
+echo str_repeat("\t", 9) . "\"example\":" . ($demoValues->splitting == 1 ? true : false) . "\n";
 ?>
 								},
 								"ESt":{
