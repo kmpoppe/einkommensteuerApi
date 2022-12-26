@@ -89,7 +89,7 @@ if (sizeof($errorStack) == 0) {
 			break;
 		}
 		case "validYearsSoli": {
-			$calcObj = new calcESt();
+			$calcObj = new calcSoli();
 			$validYears = $calcObj->validYears();
 			$returnData = Array("minimum" => $validYears[0], "maximum" => $validYears[1]);
 			break;
