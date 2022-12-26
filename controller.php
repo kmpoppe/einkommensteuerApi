@@ -4,7 +4,6 @@ require_once(__DIR__ . "/calcESt.php");
 require_once(__DIR__ . "/calcSoli.php");
 
 set_time_limit(0);
-header('Content-type: application/json');
 
 $errorStack = Array();
 
@@ -125,9 +124,12 @@ if (sizeof($errorStack) == 0) {
 if (sizeof($errorStack) > 0) {
 	$returnData = Array("result" => "Error", "errors" => implode("\r\n", $errorStack));
 	$returnData["calledMethod"] = $calledMethod;
+	header("HTTP/1.1 400 Bad Request");
 } else {
 	$returnData["calledMethod"] = $calledMethod;
+	header("HTTP/1.1 200 OK");
 }
 
+header('Content-type: application/json');
 echo json_encode($returnData);
 ?>

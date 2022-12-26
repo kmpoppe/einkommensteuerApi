@@ -1,8 +1,11 @@
 <?php
 $fgcOptions = Array("ssl" => Array("verify_peer" => false, "verify_peer_name" => false));  
-$validYearsESt = json_decode(file_get_contents("https://" . $_SERVER["HTTP_HOST"]. "/methods/validYearsESt", false, stream_context_create($fgcOptions)));
-$validYearsSoli = json_decode(file_get_contents("https://" . $_SERVER["HTTP_HOST"]. "/methods/validYearsSoli", false, stream_context_create($fgcOptions)));
-$demoValues = json_decode(file_get_contents("https://" . $_SERVER["HTTP_HOST"]. "/methods/getDemoValues", false, stream_context_create($fgcOptions)));
+$validYearsESt  = json_decode(
+	file_get_contents("https://" . $_SERVER["HTTP_HOST"]. "/methods/validYearsESt",  false, stream_context_create($fgcOptions)));
+$validYearsSoli = json_decode(
+	file_get_contents("https://" . $_SERVER["HTTP_HOST"]. "/methods/validYearsSoli", false, stream_context_create($fgcOptions)));
+$demoValues     = json_decode(
+	file_get_contents("https://" . $_SERVER["HTTP_HOST"]. "/methods/getDemoValues",  false, stream_context_create($fgcOptions)));
 ?>
 {
 	"swagger": "2.0",
@@ -85,17 +88,11 @@ echo str_repeat("\t", 9) . "\"example\":" . $demoValues->zvE . "\n";
 								},
 								"result": {
 									"type": "string",
-									"description": "OK wenn die Berechnung erfolgreich war, Error wenn ein Fehler aufgetreten ist",
+									"description": "'OK' da die Berechnung erfolgreich war",
 									"enum": [
-										"OK",
-										"Error"
+										"OK"
 									],
 									"example": "OK"
-								},
-								"errors": {
-									"type": "string",
-									"description": "Liste der aufgetretenen Fehler",
-									"example": ""
 								},
 								"value": {
 									"type": "integer",
@@ -104,6 +101,35 @@ echo str_repeat("\t", 9) . "\"example\":" . $demoValues->zvE . "\n";
 <?php
 echo str_repeat("\t", 9) . "\"example\":" . $demoValues->ESt . "\n";
 ?>
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Fehler",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"calledMethod": {
+									"type": "string",
+									"description": "Rückgabe des Namens der aufgerufenen Methode zur Kontrolle",
+									"enum": [
+										"calcESt"
+									],
+									"example": "calcESt"
+								},
+								"result": {
+									"type": "string",
+									"description": "'Error', da ein Fehler aufgetreten ist",
+									"enum": [
+										"Error"
+									],
+									"example": "Error"
+								},
+								"errors": {
+									"type": "string",
+									"description": "Liste der aufgetretenen Fehler",
+									"example": ""
 								}
 							}
 						}
@@ -171,17 +197,11 @@ echo str_repeat("\t", 9) . "\"example\":" . $demoValues->ESt . "\n";
 								},
 								"result": {
 									"type": "string",
-									"description": "OK wenn die Berechnung erfolgreich war, Error wenn ein Fehler aufgetreten ist",
+									"description": "'OK' da die Berechnung erfolgreich war",
 									"enum": [
-										"OK",
-										"Error"
+										"OK"
 									],
 									"example": "OK"
-								},
-								"errors": {
-									"type": "string",
-									"description": "Liste der aufgetretenen Fehler",
-									"example": ""
 								},
 								"value": {
 									"type": "number",
@@ -190,6 +210,35 @@ echo str_repeat("\t", 9) . "\"example\":" . $demoValues->ESt . "\n";
 <?php
 echo str_repeat("\t", 9) . "\"example\":" . $demoValues->Soli . "\n";
 ?>
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Fehler",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"calledMethod": {
+									"type": "string",
+									"description": "Rückgabe des Namens der aufgerufenen Methode zur Kontrolle",
+									"enum": [
+										"calcSoli"
+									],
+									"example": "calcSoli"
+								},
+								"result": {
+									"type": "string",
+									"description": "'Error', da ein Fehler aufgetreten ist",
+									"enum": [
+										"Error"
+									],
+									"example": "Error"
+								},
+								"errors": {
+									"type": "string",
+									"description": "Liste der aufgetretenen Fehler",
+									"example": ""
 								}
 							}
 						}
@@ -240,23 +289,46 @@ echo str_repeat("\t", 9) . "\"example\":" . $demoValues->year . "\n";
 								},
 								"result": {
 									"type": "string",
-									"description": "OK wenn die Berechnung erfolgreich war, Error wenn ein Fehler aufgetreten ist",
+									"description": "'OK' da die Berechnung erfolgreich war",
 									"enum": [
-										"OK",
-										"Error"
+										"OK"
 									],
 									"example": "OK"
-								},
-								"errors": {
-									"type": "string",
-									"description": "Liste der aufgetretenen Fehler",
-									"example": ""
 								},
 								"value": {
 									"type": "number",
 									"description": "Grundfreibetrag",
 									"minimum": 0,
 									"example": 9000
+								}
+							}
+						}
+					},
+					"400": {
+						"description": "Fehler",
+						"schema": {
+							"type": "object",
+							"properties": {
+								"calledMethod": {
+									"type": "string",
+									"description": "Rückgabe des Namens der aufgerufenen Methode zur Kontrolle",
+									"enum": [
+										"getGrundfreibetrag"
+									],
+									"example": "getGrundfreibetrag"
+								},
+								"result": {
+									"type": "string",
+									"description": "'Error', da ein Fehler aufgetreten ist",
+									"enum": [
+										"Error"
+									],
+									"example": "Error"
+								},
+								"errors": {
+									"type": "string",
+									"description": "Liste der aufgetretenen Fehler",
+									"example": ""
 								}
 							}
 						}
