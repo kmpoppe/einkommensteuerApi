@@ -23,10 +23,17 @@
 							}
 						}
 						else if (xmlhttp.status == 400) {
-							alert('There was an error 400');
+							try {
+								const obj = JSON.parse(xmlhttp.responseText);
+								if (obj.result == "Error") {
+									alert('Error(s) returned from API: ' + obj.error);
+								}
+							} catch (e) {
+								alert('There was an error 400');
+							}
 						}
 						else {
-							alert('something else other than 200 was returned');
+							alert('Aomething else other than 200 or 400 was returned');
 						}
 					}
 				};
@@ -37,16 +44,25 @@
 				var xmlhttp = new XMLHttpRequest();
 				xmlhttp.onreadystatechange = function() {
 					if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+						document.getElementById('getSoliButton').disabled = true;
 						if (xmlhttp.status == 200) {
 							const obj = JSON.parse(xmlhttp.responseText);
 							document.getElementById('EStDisplay').innerHTML = obj.value.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
 							document.getElementById('EStValue').innerHTML = obj.value;
+							document.getElementById('getSoliButton').disabled = false;
 						}
 						else if (xmlhttp.status == 400) {
-							alert('There was an error 400');
+							try {
+								const obj = JSON.parse(xmlhttp.responseText);
+								if (obj.result == "Error") {
+									alert('Error(s) returned from API: ' + obj.error);
+								}
+							} catch (e) {
+								alert('There was an error 400');
+							}
 						}
 						else {
-							alert('something else other than 200 was returned');
+							alert('Aomething else other than 200 or 400 was returned');
 						}
 					}
 				};
@@ -62,7 +78,6 @@
 						zvE:       zvEValue
 					}
 				);
-				alert(sendData);
 				if (checkNumeric(document.querySelector('input[name="zvE"]')))
 					xmlhttp.send(sendData);
 			}
@@ -72,16 +87,22 @@
 					if (xmlhttp.readyState == XMLHttpRequest.DONE) {
 						if (xmlhttp.status == 200) {
 							const obj = JSON.parse(xmlhttp.responseText);
-							alert(xmlhttp.responseText);
-
 							document.getElementById('Soli').innerHTML = obj.value.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
 						}
 						else if (xmlhttp.status == 400) {
-							alert('There was an error 400');
+							try {
+								const obj = JSON.parse(xmlhttp.responseText);
+								if (obj.result == "Error") {
+									alert('Error(s) returned from API: ' + obj.error);
+								}
+							} catch (e) {
+								alert('There was an error 400');
+							}
 						}
 						else {
-							alert('something else other than 200 was returned');
+							alert('Aomething else other than 200 or 400 was returned');
 						}
+
 					}
 				};
 				xmlhttp.open("POST", apiBase + "methods/calcSoli", true);
@@ -184,7 +205,7 @@
 					<td><input name="EStAdd" title="Zuschläge zur Einkommensteuer" onblur="checkNumeric(this)"/></td>
 				</tr>
 				<tr>
-					<td><input type="button" value="Berechnen" onclick="getSoli()" disabled/></td>
+					<td><input type="button" value="Berechnen" onclick="getSoli()" id="getSoliButton" disabled/></td>
 				</tr>
 				<tr>
 					<td colspan="2"><hr/></td>
