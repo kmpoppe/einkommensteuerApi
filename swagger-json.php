@@ -53,7 +53,9 @@ echo str_repeat("\t", 9) . "\"example\":" . $demoValues->year . "\n";
 								"splitting": {
 									"type": "boolean",
 									"description": "Angabe, ob das Splittingverfahren für zusammenveranlagte steuerpflichtige Personen verwendet werden soll",
-									"example": true
+<?php
+echo str_repeat("\t", 9) . "\"example\":" . $demoValues->splitting . "\n";
+?>
 								},
 								"zvE": {
 									"type": "integer",
@@ -131,19 +133,23 @@ echo str_repeat("\t", 9) . "\"example\":" . $demoValues->ESt . "\n";
 <?php
 echo str_repeat("\t", 9) . "\"minimum\":" . $validYearsSoli->minimum . ",\n";
 echo str_repeat("\t", 9) . "\"maximum\":" . $validYearsSoli->maximum . ",\n";
+echo str_repeat("\t", 9) . "\"example\":" . $demoValues->year . "\n";
 ?>
-									"example": 2018
 								},
 								"splitting": {
 									"type": "boolean",
 									"description": "Angabe, ob das Splittingverfahren für zusammenveranlagte steuerpflichtige Personen verwendet werden soll",
-									"example": true
+<?php
+echo str_repeat("\t", 9) . "\"example\":" . $demoValues->splitting . "\n";
+?>
 								},
-								"zvE": {
+								"ESt": {
 									"type": "integer",
 									"description": "Tarifliche Einkommensteuer, auf die der Solidaritätszuschlag berechent werden soll",
 									"minimum": 0,
-									"example": 3804
+<?php
+echo str_repeat("\t", 9) . "\"example\":" . $demoValues->ESt . "\n";
+?>
 								}
 							}
 						}
@@ -181,7 +187,9 @@ echo str_repeat("\t", 9) . "\"maximum\":" . $validYearsSoli->maximum . ",\n";
 									"type": "number",
 									"description": "Solidaritätszuschlag, abgerundet auf den nächsten Euro-Cent",
 									"minimum": 0,
-									"example": 209.22
+<?php
+echo str_repeat("\t", 9) . "\"example\":" . $demoValues->Soli . "\n";
+?>
 								}
 							}
 						}
@@ -209,8 +217,8 @@ echo str_repeat("\t", 9) . "\"maximum\":" . $validYearsSoli->maximum . ",\n";
 <?php
 echo str_repeat("\t", 9) . "\"minimum\":" . $validYearsSoli->minimum . ",\n";
 echo str_repeat("\t", 9) . "\"maximum\":" . $validYearsSoli->maximum . ",\n";
+echo str_repeat("\t", 9) . "\"example\":" . $demoValues->year . "\n";
 ?>
-									"example": 2018
 								}
 							}
 						}
@@ -284,21 +292,28 @@ echo str_repeat("\t", 9) . "\"example\":" . $validYearsESt->minimum . "\n";
 									"type":"integer",
 									"description":"Zu versteuerndes Einkommen",
 <?php
-//echo str_repeat("\t", 9) . "\"example\":" . $validYearsESt->maximum . "\n";
+echo str_repeat("\t", 9) . "\"example\":" . $demoValues->zvE . "\n";
 ?>
 								},
 								"splitting":{
 									"type":"boolean",
 									"description":"Splittingverfahren verwendet",
 <?php
-//echo str_repeat("\t", 9) . "\"example\":" . $validYearsESt->maximum . "\n";
+echo str_repeat("\t", 9) . "\"example\":" . $demoValues->splitting . "\n";
 ?>
 								},
 								"ESt":{
 									"type":"integer",
 									"description":"Im Steuerjahr zu zahlende Einkommensteuer",
 <?php
-//echo str_repeat("\t", 9) . "\"example\":" . $validYearsESt->maximum . "\n";
+echo str_repeat("\t", 9) . "\"example\":" . $demoValues->ESt . "\n";
+?>
+								},
+								"Soli":{
+									"type":"integer",
+									"description":"Im Steuerjahr zu zahlender Solidaritätszuschlag",
+<?php
+echo str_repeat("\t", 9) . "\"example\":" . $demoValues->Soli . "\n";
 ?>
 								}
 							}

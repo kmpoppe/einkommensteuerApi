@@ -99,6 +99,8 @@ if (sizeof($errorStack) == 0) {
 			$returnData["zvE"] = round($gfb * mt_rand(5000, 10000) / 1000);
 			$returnData["splitting"] = (mt_rand(0, 100) > 50);
 			$returnData["ESt"] = $calcObj->calc($returnData["year"], $returnData["splitting"], $returnData["zvE"])["value"];
+			$calcObj = new calcSoli();
+			$returnData["Soli"] = $calcObj->calc($returnData["year"], $returnData["splitting"], $returnData["ESt"])["value"];
 			break;
 		}
 		case "validYearsESt": {
