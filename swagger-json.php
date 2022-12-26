@@ -287,6 +287,12 @@ echo str_repeat("\t", 9) . "\"example\":" . $validYearsESt->minimum . "\n";
 //echo str_repeat("\t", 9) . "\"example\":" . $validYearsESt->maximum . "\n";
 ?>
 								},
+								"splitting":{
+									"type":"boolean",
+									"description":"Splittingverfahren verwendet",
+<?php
+//echo str_repeat("\t", 9) . "\"example\":" . $validYearsESt->maximum . "\n";
+?>
 								"ESt":{
 									"type":"integer",
 									"description":"Im Steuerjahr zu zahlende Einkommensteuer",
