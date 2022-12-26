@@ -362,6 +362,13 @@ echo str_repeat("\t", 9) . "\"example\":" . $demoValues->Gfb . "\n";
 echo str_repeat("\t", 9) . "\"example\":" . $validYearsESt->minimum . "\n";
 ?>
 								},
+								"Gfb":{
+									"type":"integer",
+									"description":"Grundfreibetrag für das Steuerjahr",
+<?php
+echo str_repeat("\t", 9) . "\"example\":" . $demoValues->zvE . "\n";
+?>
+								},
 								"zvE":{
 									"type":"integer",
 									"description":"Zu versteuerndes Einkommen",
