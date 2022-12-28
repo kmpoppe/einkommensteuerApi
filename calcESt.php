@@ -112,7 +112,7 @@ class calcESt {
 			// Untere Progressionszone
 			$y = ($zvE - $zoneLimits->zone0) / 10000.0;
 			// Eingangssteuersatz 15.0% für 2007 und 2008, danach 14.0%
-			$startEStPerc = (in_array($year, range(2007, 2008)) ? 15 : 14);
+			$startEStPerc = (in_array($year, range(2007, 2008)) ? 1500 : 1400);
 			$ESt = ($formulaValues->zone1factor * $y + $startEStPerc) * $y;
 		}
 		elseif ($zvE < $zoneLimits->zone2 + 1)
