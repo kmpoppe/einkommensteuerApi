@@ -109,7 +109,7 @@
 				xmlhttp.setRequestHeader("Content-Type", "application/json");
 				var splittingValue = document.querySelector('input[name="splitting"]:checked')?.value;
 				var yearValue      = document.querySelector('select[name="year"]').value;
-				var EStValue       = parseInt(document.querySelector('span[id="EStValue"]').innerHTML);
+				var EStValue       = tryParseInt(document.querySelector('span[id="EStValue"]').innerHTML, 0);
 				EStValue          -= tryParseInt(document.querySelector('input[name="EStDed"]').value, 0);
 				EStValue          += tryParseInt(document.querySelector('input[name="EStAdd"]').value, 0);
 				const sendData = JSON.stringify(
@@ -127,8 +127,11 @@
 				}
 			}
 			function checkNumeric(obj) {
-				if (obj.value.trim() != "" && tryParseInt(obj.value.trim(), 0) > 0) {
-					alert("Das Feld "+obj.title+" soll nur Ziffern enthalten (nur ganze Euro größer 0 werden zur Berechnung benötigt)!");
+				if (obj.value.trim() == "") {
+					return true;
+				}
+				if (obj.value.trim() != "" && !(tryParseInt(obj.value.trim(), 0) > 0)) {
+					alert("Das Feld\n  '"+obj.title+"'\nsoll nur Ziffern enthalten.\n(Nur ganze Euro größer 0 werden zur Berechnung benötigt)!" + (obj.title != "Zu versteuerndes Einkommen" ? "\nGgf. Feld leer lassen!" : ""));
 					return false;
 				}
 				return true;
@@ -187,7 +190,7 @@
 					<td>
 						<input type="radio" name="splitting" id="splitJ" value="true" title="Splittingverfahren verwenden">
 						<label for="splitJ">Ja</label>
-						<input type="radio" name="splitting" id="splitN" value="false" selected title="Splittingverfahren nicht verwenden">
+						<input type="radio" name="splitting" id="splitN" value="false" checked title="Splittingverfahren nicht verwenden">
 						<label for="splitN">Nein</label>
 					</td>
 				</tr>
