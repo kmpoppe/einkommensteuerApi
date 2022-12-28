@@ -110,8 +110,8 @@
 				var splittingValue = document.querySelector('input[name="splitting"]:checked')?.value;
 				var yearValue      = document.querySelector('select[name="year"]').value;
 				var EStValue       = parseInt(document.querySelector('span[id="EStValue"]').innerHTML);
-				EStValue          -= parseInt(document.querySelector('input[name="EStDed"]').value);
-				EStValue          += parseInt(document.querySelector('input[name="EStAdd"]').value);
+				EStValue          -= tryParseInt(document.querySelector('input[name="EStDed"]').value, 0);
+				EStValue          += tryParseInt(document.querySelector('input[name="EStAdd"]').value, 0);
 				const sendData = JSON.stringify(
 					{ 
 						splitting: splittingValue, 
@@ -127,11 +127,23 @@
 				}
 			}
 			function checkNumeric(obj) {
-				if (obj.value != "" && !/^(\d+)$/.test(obj.value)) {
+				if (obj.value.trim() != "" && tryParseInt(obj.value.trim(), 0) > 0) {
 					alert("Das Feld "+obj.title+" soll nur Ziffern enthalten (nur ganze Euro größer 0 werden zur Berechnung benötigt)!");
 					return false;
 				}
 				return true;
+			}
+			function tryParseInt(str, defaultValue) {
+				// source: https://pietschsoft.com/post/2008/01/14/javascript-inttryparse-equivalent
+				var retValue = defaultValue;
+				if(str !== null) {
+					if(str.length > 0) {
+						if (!isNaN(str)) {
+							retValue = parseInt(str);
+						}
+					}
+				}
+				return retValue;
 			}
 			loadValidYears();
 		</script>
