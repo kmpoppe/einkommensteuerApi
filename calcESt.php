@@ -38,7 +38,8 @@ class calcESt {
 				2022 => new estZoneLimits(10346, 14926, 58596, 277825),
 				2023 => new estZoneLimits(10908, 15999, 62809, 277825),
 				2024 => new estZoneLimits(11784, 17005, 66760, 277825),
-				2025 => new estZoneLimits(11784, 17005, 66760, 277825)
+				2025 => new estZoneLimits(12096, 17443, 68480, 277825),
+				2026 => new estZoneLimits(12348, 17799, 69878, 277825),
 			);
 		}
 
@@ -74,7 +75,8 @@ class calcESt {
 				2022 => new estFormulaValues(1088.67, 206.43,  869.32,  9336.45, 17671.20),
 				2023 => new estFormulaValues( 979.18, 192.59,  966.53,  9972.28, 18307.73),
 				2024 => new estFormulaValues( 954.80, 181.19,  991.21, 10636.31, 18971.06),
-				2025 => new estFormulaValues( 954.80, 181.19,  991.21, 10636.31, 18971.06)
+				2025 => new estFormulaValues( 932.30, 176.64, 1015.13, 10911.92, 19246.67),
+				2026 => new estFormulaValues( 914.51, 173.10, 1034.87, 11135.63, 19470.38)
 			);
 		}
 

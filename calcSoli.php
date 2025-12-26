@@ -20,7 +20,8 @@ class calcSoli {
 				2022 => new soliValues(16956, 0.119),
 				2023 => new soliValues(17543, 0.119),
 				2024 => new soliValues(18130, 0.119),
-				2025 => new soliValues(18130, 0.119)
+				2025 => new soliValues(19950, 0.119),
+				2026 => new soliValies(20350, 0.119)
 			);
 			// Programmablaufpläne 2007 - 2020 identische Werte
 			for ($duplicateY = 2008; $duplicateY <= 2020; $duplicateY++)
